@@ -9,7 +9,7 @@ trait Groups { self: Client =>
                            fieldextra: Option[Seq[String]] = None,
                            omits: Option[Seq[String]] = None,
                            onlys: Option[Seq[String]] = None)
-       extends Completion {
+       extends Client.Completion {
 
     def urlname(ns: String*) = copy(urlnames = Some(ns))
     def id(ids: Int*) = copy(ids = Some(ids))

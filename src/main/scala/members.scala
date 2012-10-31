@@ -7,7 +7,7 @@ trait Member { self: Client =>
                            fieldextra: Option[Seq[String]] = None,
                            omits: Option[Seq[String]] = None,
                            onlys: Option[Seq[String]] = None)
-       extends Completion {
+       extends Client.Completion {
     def fields(fs: Seq[String]) = copy(fieldextra = Some(fs))
     def omit(fs: String*) = copy(omits = Some(fs))
     def only(fs: String*) = copy(onlys = Some(fs))
