@@ -19,7 +19,8 @@ case class Client(credentials: meetup.Credentials, http: Http = Http)
      with Groups
      with Member
      with OpenEvents
-     with Rsvps {
+     with Rsvps
+     with Raw {
   def apply[T](req: RequestBuilder)(handler: Client.Handler[T]): Promise[T] =
     http(credentials.sign(req) > handler)
 }

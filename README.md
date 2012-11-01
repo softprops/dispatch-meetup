@@ -30,6 +30,13 @@ The rest interface includes a fluent interface for most REST style API methods f
 
     val event = restClient.rsvps.event("123").request(as.lift.Json)
     
+In addition to the rest client's fluent method interface it also supports a low-level raw inteface for supplying a raw string path and map of parameters. With these you can excute any `get(path, params)(handler)` `post(path, parms)(handler)` or `delete(path)(hander)` method given a raw path.
+
+    val group = restClient.get(
+      "/2/groups", Map("group_urlname" -> "ny-scala")
+    )(as.lift.Json)
+
+
 The stream interface includes a fluent interface for most stream API methods for building up requests. You can execute a request by using the `foreach(handler)` method on any of these method interfaces.
 
     streamClient.rsvps.foreach(handler)
