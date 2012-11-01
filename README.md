@@ -13,7 +13,7 @@ to get off the ground is with your api key.
     val client = meetup.rest.Client(Key("your_api_key"))
 
 Once you have a client, you can start making requests. The philsophy of this client is to let you
-decide what you want to use for deserializing API response. The interface for doing so is by providing a function of `Response => T`.
+decide what you want to use for deserializing API responses. The interface for doing so is by providing a function of `Response => T`.
 
     client.groups.urlname("ny-scala")(as.lift.Json)
     
