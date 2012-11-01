@@ -4,7 +4,7 @@ import dispatch._
 
 trait EventComments { self: Client =>
     case class EventCommentsBuilder(events: Option[Seq[String]] = None,
-                                    comments: Option[Seq[String]] = None,
+                                    comments: Option[Seq[Int]] = None,
                                     groups: Option[Seq[Int]] = None,
                                     members: Option[Seq[Int]] = None,
                                     showDiffs: Option[Boolean] = None,
@@ -18,6 +18,8 @@ trait EventComments { self: Client =>
     def group(ids: Int*) = copy(groups = Some(ids))
 
     def member(ids: Int*) = copy(members = Some(ids))
+
+    def comment(ids: Int*) = copy(comments = Some(ids))
 
     def diffs(d: Boolean) = copy(showDiffs = Some(d))
 
