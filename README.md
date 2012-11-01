@@ -8,7 +8,8 @@ a small wip meetup client for dispatch
 
     object Main {
       def main(args: Array[String]) {
-        val cli = Client(Key("API_KEY"))
+        // get the name of an organizer
+        val cli = rest.Client(Key("API_KEY"))
         val org = for { 
           JObject(org) <- (cli.groups
                               .urlname("ny-scala")
@@ -17,6 +18,9 @@ a small wip meetup client for dispatch
           JField("name", JString(name)) <- org
         } yield name
         println(org)
+        
+        // get pushed a stream of all public rsvps
+        meetup.stream.Client().rsvps.foreach(println)
       }
     }
 
