@@ -1,6 +1,25 @@
-## dispatch Meetup
+# Dispatch Meetup
 
-a small wip meetup client for dispatch
+A small [meetup.com](http://www.meetup.com/) client for dispatch
+
+## General usage
+
+### Authentication
+
+The Meetup api supports multiple kinds of authentication. So does this client. The quickest way
+to get off the ground is with your api key.
+
+    import meetup._
+    val client = meetup.rest.Client(Key("your_api_key"))
+
+Once you have a client, you can start making requests. The philsophy of this client is to let you
+decide what you want to use for deserializing API response. The interface for doing so is by providing a function of `Response => T`.
+
+    client.groups.urlname("ny-scala")(as.lift.Json)
+    
+The values returned are in the form of `dispatch.Promise`s which can be processed asynchronously until you call `apply()` on them.
+
+## examples
 
     import meetup._
     import dispatch._
