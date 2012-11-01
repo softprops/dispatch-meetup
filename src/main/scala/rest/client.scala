@@ -13,11 +13,13 @@ object Client {
 /** Meetup Rest API client */
 case class Client(credentials: meetup.Credentials, http: Http = Http)
   extends meetup.DefaultHosts
-     with Member
+     with Cities
+     with Events
+     with EventComments
      with Groups
-     with OpenEvents 
-     with Rsvps
-     with Cities {
+     with Member
+     with OpenEvents
+     with Rsvps {
   def apply[T](req: RequestBuilder)(handler: Client.Handler[T]): Promise[T] =
     http(credentials.sign(req) > handler)
 }
