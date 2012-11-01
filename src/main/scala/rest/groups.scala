@@ -1,4 +1,4 @@
-package meetup
+package meetup.rest
 
 import dispatch._
 
