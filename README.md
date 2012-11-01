@@ -32,7 +32,7 @@ The rest interface includes a fluent interface for most REST style API methods f
     
 The stream interface includes a fluent interface for most stream API methods for building up requests. You can execute a request by using the `foreach(handler)` method on any of these method interfaces.
 
-   streamClient.rsvps.foreach(handler)
+    streamClient.rsvps.foreach(handler)
 
 The handler function will be called once for each streamed item.
 
