@@ -2,6 +2,7 @@ package meetup.rest
 
 import dispatch._
 import com.ning.http.client.{ RequestBuilder, Response }
+import dispatch.Defaults._
 
 object Client {
   type Handler[T] = (Response => T)

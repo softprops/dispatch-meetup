@@ -1,11 +1,13 @@
 package meetup.stream
 
 import dispatch._
-import net.liftweb.json.JValue
+import dispatch.Defaults._
 import com.ning.http.client.RequestBuilder
+import org.json4s._
+import org.json4s.native.JsonMethods._
+import JsonDSL._
 
 object Client {
-  import net.liftweb.json.JValue
   type Handler[T] = (JValue => T)
   trait Completion {
     def foreach[T](handler: Client.Handler[T]): Promise[Unit]
@@ -19,5 +21,5 @@ case class Client(http: Http = Http)
         with EventComments
         with Photos {
   def apply[T](req: RequestBuilder)(handler: Client.Handler[T]): Promise[Unit] =
-    http(req > as.lift.stream.Json(handler))
+    http(req > as.json4s.stream.Json(handler))
 }
